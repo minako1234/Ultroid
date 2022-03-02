@@ -13,9 +13,12 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
     && git clone https://github.com/TeamUltroid/Ultroid.git /root/TeamUltroid/ \
     && pip3 install --no-cache-dir -r root/TeamUltroid/requirements.txt \
     && pip3 install av --no-binary av 
+    && pip3 install flask
+    && pip3 install flask_restful
 
-RUN pip3 install flask
-RUN pip3 install flask_restful
+
+
+
 
 # Railway's banned dependency
 RUN if [ ! $RAILWAY_STATIC_URL ]; then pip3 install --no-cache-dir yt-dlp; fi
